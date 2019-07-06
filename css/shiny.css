@@ -1,0 +1,104 @@
+body {
+	background: url( "../mountain.jpg" ) no-repeat;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  	-webkit-appearance: none; 
+  	margin: 0; 
+}
+
+.detail {
+	font-size: .8em;
+}
+
+.panel-content {
+	margin-bottom: 1rem;
+}
+
+.tab-pane {
+	display: flex;
+}
+
+.navbar-brand {
+	height: 40px;
+	width: 35px;
+}
+
+.nav-link h6 {
+	margin-bottom: 0;
+}
+
+.nav-link.active {
+	color: #ff550b !important;
+}
+
+.nav-item {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.input-group {
+	padding-right: 1rem;
+}
+
+.canvas-safari {
+	height: 100px;
+	background:
+		linear-gradient(
+			to right,
+			rgba(255, 53, 11, 0.5),
+			rgba(204, 0, 255, 0.5)
+		), url("../img/safari.jpg");
+	background-size: cover;
+}
+
+.canvas-breeding {
+	height: 100px;
+	background:
+		linear-gradient(
+			to right,
+			rgba(255, 53, 11, 0.5),
+			rgba(204, 0, 255, 0.5)
+		), url("../img/breeding.jpg");
+	background-size: cover;
+}
+
+.canvas-chain {
+	height: 100px;
+	background:
+		linear-gradient(
+			to right,
+			rgba(255, 53, 11, 0.5),
+			rgba(204, 0, 255, 0.5)
+		), url("../img/fishing.jpg");
+	background-size: cover;
+}
+
+.canvas-horde {
+	height: 100px;
+	background:
+		linear-gradient(
+			to right,
+			rgba(255, 53, 11, 0.5),
+			rgba(204, 0, 255, 0.5)
+		), url("../img/horde.jpg");
+	background-size: cover;
+}
+
+.no-pad-left {
+	padding-left: 0px;
+}
+
+.no-pad-right {
+	padding-right: 0px;
+}
+
+.tab-content {
+	padding-bottom: 1rem;
+}
+
+.tab-pane {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
