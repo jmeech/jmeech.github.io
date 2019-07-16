@@ -67,6 +67,9 @@
 								<a class="nav-link" href="#radar-panel" id="radar-tab" data-toggle="tab"><h6>Radar</h6></a>
 							</li>
 							<li class="nav-item col-6 col-lg-3">
+								<a class="nav-link" href="#dexnav-panel" id="dexnav-tab" data-toggle="tab"><h6>Dexnav</h6></a>
+							</li>
+							<li class="nav-item col-6 col-lg-3">
 								<a class="nav-link" href="#full-odds-panel" id="full-odds-tab" data-toggle="tab"><h6>Full Odds</h6></a>
 							</li>
 						</ul>
@@ -118,14 +121,14 @@
 											<input type="checkbox" id="chain-charm" class="shiny-charm custom-control-input">
 											<label class="custom-control-label" for="chain-charm">Shiny Charm?</label>
 										</div>
-										<label for="chain-length">Chain Length</label>
+										<label for="fishing-length">Chain Length</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<button id="chain-reset" class="btn btn-outline-primary" type="button">Reset</button>
+												<button id="fishing-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
 											</div>
-											<input type="number" id="chain-length" min="0" class="form-control" value="0" aria-label="0" readonly="true">
+											<input type="number" id="fishing-length" min="0" class="form-control counter" value="0" aria-label="0" readonly="true">
 											<div class="input-group-append">
-												<button id="chain-increment" class="btn btn-outline-primary" type="button">+</button>
+												<button id="fishing-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
 											</div>
 										</div>
 									</div>
@@ -154,13 +157,36 @@
 								<div class="row">
 									<p class="detail">In 7th gen games, chaining S.O.S. encounters will raise the odds that a called Pokémon is shiny.</p>
 									<div class="col-8 no-pad-left">
+
+										<div id="game-select">
+											<div class="custom-control custom-radio d-inline">
+											  <input type="radio" name="game" id="game-sm" class="custom-control-input" value="0" checked>
+											  <label class="custom-control-label pr-3" for="game-sm">
+											    S/M
+											  </label>
+											</div>
+
+											<div class="custom-control custom-radio d-inline">
+											  <input type="radio" name="game" id="game-usum" class="custom-control-input" value="1">
+											  <label class="custom-control-label" for="game-usum">
+											    US/UM
+											  </label>
+											</div>
+										</div>
+
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="sos-charm" class="shiny-charm custom-control-input">
+											<label class="custom-control-label" for="sos-charm">Shiny Charm?</label>
+										</div>
+
+										<label for="sos-length">Chain Length</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<button id="chain-reset" class="btn btn-outline-primary" type="button">Reset</button>
+												<button id="sos-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
 											</div>
-											<input type="number" id="chain-length" min="0" class="form-control" value="0" aria-label="0" readonly="true">
+											<input type="number" id="sos-length" min="0" class="form-control counter" value="0" aria-label="0" readonly="true">
 											<div class="input-group-append">
-												<button id="chain-increment" class="btn btn-outline-primary" type="button">+</button>
+												<button id="sos-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
 											</div>
 										</div>
 									</div>
@@ -175,13 +201,14 @@
 								<div class="row">
 									<p class="detail">I'm not positive how Pokeradar works, this is a placeholder until I understand the formula.</p>
 									<div class="col-8 no-pad-left">
+										<label for="radar-length">Chain Length</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<button id="chain-reset" class="btn btn-outline-primary" type="button">Reset</button>
+												<button id="radar-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
 											</div>
-											<input type="number" id="chain-length" min="0" class="form-control" value="0" aria-label="0" readonly="true">
+											<input type="number" id="radar-length" min="0" class="form-control counter" value="0" aria-label="0" readonly="true">
 											<div class="input-group-append">
-												<button id="chain-increment" class="btn btn-outline-primary" type="button">+</button>
+												<button id="radar-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
 											</div>
 										</div>
 									</div>
@@ -191,20 +218,41 @@
 								</div>
 							</div>
 
+							<!-- DEXNAV PANEL -->
+							<div class="tab-pane container" id="dexnav-panel">
+								<div class="row">
+									<p class="detail">I'm not positive how Dexnav hunting works, this is a placeholder until I understand the formula.</p>
+									<div class="col-8 no-pad-left">
+										<label for="dexnav-length">Chain Length</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="dexnav-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="dexnav-length" min="0" class="form-control counter" value="0" aria-label="0" readonly="true">
+											<div class="input-group-append">
+												<button id="dexnav-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
+										</div>
+									</div>
+									<div class="col-4 align-self-end no-pad-right">
+										<a href="https://bulbapedia.bulbagarden.net/wiki/DexNav" class="btn btn-primary float-right">Bulbapedia</a>
+									</div>
+								</div>
+							</div>
+
 							<!-- FULL ODDS PANEL -->
 							<div class="tab-pane container" id="full-odds-panel">
 								<div class="row">
 									<p class="detail">By encountering the same Pokémon over and over, eventually that Pokémon will be shiny.</p>
 									<div class="custom-control custom-checkbox col-8">
-										<input type="checkbox" id="safari-charm" class="shiny-charm custom-control-input">
-										<label class="custom-control-label" for="safari-charm">Shiny Charm?</label>
+										<input type="checkbox" id="full-charm" class="shiny-charm custom-control-input">
+										<label class="custom-control-label" for="full-charm">Shiny Charm?</label>
 									</div>
 									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/Friend_Safari" class="btn btn-primary float-right">Bulbapedia</a>
+										<a href="https://bulbapedia.bulbagarden.net/wiki/Shiny_Pokémon" class="btn btn-primary float-right">Bulbapedia</a>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
