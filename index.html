@@ -7,6 +7,9 @@
 
 			Altered to suit the needs of myself and friends,
 			and made somewhat better looking, imo.
+
+			I've used inspiration, snippets, formulas, etc. from 
+			various sources.  Original authors noted where relevant.
 		-->
 
 		<meta charset="utf-8">
@@ -82,9 +85,21 @@
 							<div class="tab-pane container active" id="safari-panel">
 								<div class="row">
 									<p class="detail">Pokémon in the Kalos Friend Safari have an increased shiny rate.  This stacks with the Shiny Charm.</p>
-									<div class="custom-control custom-checkbox col-8">
-										<input type="checkbox" id="safari-charm" class="shiny-charm custom-control-input">
-										<label class="custom-control-label" for="safari-charm">Shiny Charm?</label>
+									<div class="col-8 no-pad-left">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="safari-charm" class="shiny-charm custom-control-input">
+											<label class="custom-control-label" for="safari-charm">Shiny Charm?</label>
+										</div>
+										<label for="safari-length">Encounters</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="safari-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="safari-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<div class="input-group-append">
+												<button id="safari-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
+										</div>
 									</div>
 									<div class="col-4 align-self-end no-pad-right">
 										<a href="https://bulbapedia.bulbagarden.net/wiki/Friend_Safari" class="btn btn-primary float-right">Bulbapedia</a>
@@ -104,6 +119,16 @@
 										<div class="custom-control custom-checkbox">
 											<input type="checkbox" id="masuda-method" class="custom-control-input">
 											<label class="custom-control-label" for="masuda-method">Masuda Method?</label>
+										</div>
+										<label for="breeding-length">Encounters</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="breeding-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="breeding-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<div class="input-group-append">
+												<button id="breeding-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
 										</div>
 									</div>
 									<div class="col-4 align-self-end no-pad-right">
@@ -142,9 +167,21 @@
 							<div class="tab-pane container" id="horde-panel">
 								<div class="row">
 									<p class="detail">Hordes allow you to encounter five Pokémon simultaneously, effectively allowing you to check 5 at a time.</p>
-									<div class="custom-control custom-checkbox col-8">
-										<input type="checkbox" id="horde-charm" class="shiny-charm custom-control-input">
-										<label class="custom-control-label" for="horde-charm">Shiny Charm?</label>
+									<div class="col-8 no-pad-left">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="horde-charm" class="shiny-charm custom-control-input">
+											<label class="custom-control-label" for="horde-charm">Shiny Charm?</label>
+										</div>
+										<label for="horde-length">Encounters</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="horde-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="horde-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<div class="input-group-append">
+												<button id="horde-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
+										</div>
 									</div>
 									<div class="col-4 align-self-end no-pad-right">
 										<a href="https://bulbapedia.bulbagarden.net/wiki/Horde_Encounter" class="btn btn-primary float-right">Bulbapedia</a>
@@ -157,7 +194,6 @@
 								<div class="row">
 									<p class="detail">In 7th gen games, chaining S.O.S. encounters will raise the odds that a called Pokémon is shiny.</p>
 									<div class="col-8 no-pad-left">
-
 										<div id="game-select">
 											<div class="custom-control custom-radio d-inline">
 											  <input type="radio" name="game" id="game-sm" class="custom-control-input" value="0" checked>
@@ -165,7 +201,6 @@
 											    S/M
 											  </label>
 											</div>
-
 											<div class="custom-control custom-radio d-inline">
 											  <input type="radio" name="game" id="game-usum" class="custom-control-input" value="1">
 											  <label class="custom-control-label" for="game-usum">
@@ -173,18 +208,16 @@
 											  </label>
 											</div>
 										</div>
-
 										<div class="custom-control custom-checkbox">
 											<input type="checkbox" id="sos-charm" class="shiny-charm custom-control-input">
 											<label class="custom-control-label" for="sos-charm">Shiny Charm?</label>
 										</div>
-
 										<label for="sos-length">Chain Length</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
 												<button id="sos-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
 											</div>
-											<input type="number" id="sos-length" min="0" class="form-control counter" value="0" aria-label="0" readonly="true">
+											<input type="number" id="sos-length" min="0" class="form-control counter" value="0" aria-label="0">
 											<div class="input-group-append">
 												<button id="sos-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
 											</div>
@@ -206,7 +239,7 @@
 											<div class="input-group-prepend">
 												<button id="radar-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
 											</div>
-											<input type="number" id="radar-length" min="0" class="form-control counter" value="0" aria-label="0" readonly="true">
+											<input type="number" id="radar-length" min="0" class="form-control counter" value="0" aria-label="0">
 											<div class="input-group-append">
 												<button id="radar-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
 											</div>
@@ -223,12 +256,22 @@
 								<div class="row">
 									<p class="detail">I'm not positive how Dexnav hunting works, this is a placeholder until I understand the formula.</p>
 									<div class="col-8 no-pad-left">
-										<label for="dexnav-length">Chain Length</label>
+										<label for="dexnav-length">Search Level</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
 												<button id="dexnav-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
 											</div>
-											<input type="number" id="dexnav-length" min="0" class="form-control counter" value="0" aria-label="0" readonly="true">
+											<input type="number" id="dexnav-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<div class="input-group-append">
+												<button id="dexnav-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
+										</div>
+										<label for="dexnav-length">Encounters</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="dexnav-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="dexnav-length" min="0" class="form-control counter" value="0" aria-label="0">
 											<div class="input-group-append">
 												<button id="dexnav-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
 											</div>
@@ -244,9 +287,21 @@
 							<div class="tab-pane container" id="full-odds-panel">
 								<div class="row">
 									<p class="detail">By encountering the same Pokémon over and over, eventually that Pokémon will be shiny.</p>
-									<div class="custom-control custom-checkbox col-8">
-										<input type="checkbox" id="full-charm" class="shiny-charm custom-control-input">
-										<label class="custom-control-label" for="full-charm">Shiny Charm?</label>
+									<div class="col-8 no-pad-left">
+										<div class="custom-control custom-checkbox col-8">
+											<input type="checkbox" id="full-charm" class="shiny-charm custom-control-input">
+											<label class="custom-control-label" for="full-charm">Shiny Charm?</label>
+										</div>
+										<label for="full-odds-length">Encounters</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="full-odds-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="full-odds-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<div class="input-group-append">
+												<button id="full-odds-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
+										</div>
 									</div>
 									<div class="col-4 align-self-end no-pad-right">
 										<a href="https://bulbapedia.bulbagarden.net/wiki/Shiny_Pokémon" class="btn btn-primary float-right">Bulbapedia</a>
@@ -261,10 +316,15 @@
 				<div class="col-sm-12 col-md-6 panel-content">
 					<div class="card bg-primary text-white">
 						<div class="card-body d-flex flex-column align-items-start">
-							<h4 class="card-title">Odds</h4>
+							<h4 class="card-title">Odds - Single Encounter</h4>
 							<p class="card-text">
-								<span id="total-pulls">5</span> in 4096 <br />
-								About 1 in <span id="total-pulls-estimate">4096</span>
+								<span id="total-pulls"></span> in 4096 <br />
+								About 1 in <span id="total-pulls-estimate"></span>
+							</p>
+							<h4 class="card-title">Odds - Cumulative</h4>
+							<p class="card-text">
+								Total Cumulative odds: <span id="total-cumulative"></span><br />
+								<span id="total-percent"></span>% odds of having seen a shiny by now.
 							</p>
 						</div>
 					</div>
@@ -275,6 +335,30 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<!-- Substack's gamma implementation -->
+		<!-- https://github.com/substack/gamma.js -->
+		<script src="./javascript/gamma.js" type="text/javascript"></script>
 		<script src="./javascript/shiny.js" type="text/javascript"></script>
 	</body>
+	<!--
+	Copyright (c) 2019 Brian Eckenrode <jmeech>
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+	-->
 </html>
