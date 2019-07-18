@@ -1,5 +1,7 @@
 body {
 	background: url( "../mountain.jpg" ) no-repeat;
+	background-position: center-top;
+	background-attachment: fixed;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -105,4 +107,17 @@ input[type=number] {
 .tab-pane {
 	padding-left: 1rem;
 	padding-right: 1rem;
+}
+
+.sprite {
+	background-color: #aaaa;
+	padding-left: 0;
+	padding-right: 0;
+	width: 96px !important;
+	height: 96px !important;
+	display: inline-block;
+}
+
+.sprite:hover {
+	background-color: #ccca;
 }
