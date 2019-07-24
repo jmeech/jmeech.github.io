@@ -1,0 +1,30 @@
+								<div class="row">
+									<p class="detail">By encountering the same Pokémon over and over, eventually that Pokémon will be shiny.</p>
+									<div class="col-8 no-pad-left">
+										<!-- Full Odds Gen selector -->
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="full-odds-gen" class="gen custom-control-input">
+											<label class="custom-control-label" for="full-odds-gen">Pre Gen VI?</label>
+										</div>
+										<!-- Full Odds shiny charm -->
+										<div class="custom-control custom-checkbox col-8">
+											<input type="checkbox" id="full-charm" class="shiny-charm custom-control-input">
+											<label class="custom-control-label" for="full-charm">Shiny Charm?</label>
+										</div>
+										<!-- Full odds chain length -->
+										<label for="full-odds-length">Encounters</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="full-odds-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="full-odds-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<div class="input-group-append">
+												<button id="full-odds-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
+										</div>
+									</div>
+									<!-- Full Odds information link -->
+									<div class="col-4 align-self-end no-pad-right">
+										<a href="https://bulbapedia.bulbagarden.net/wiki/Shiny_Pokémon" class="btn btn-primary float-right">Bulbapedia</a>
+									</div>
+								</div>

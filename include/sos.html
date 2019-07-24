@@ -1,0 +1,40 @@
+								<div class="row">
+									<p class="detail">In 7th gen games, chaining S.O.S. encounters will raise the odds that a called Pokémon is shiny.</p>
+									<div class="col-8 no-pad-left">
+										<div id="game-select">
+											<!-- SOS Game Select -->
+											<div class="custom-control custom-radio d-inline">
+											  <input type="radio" name="game" id="game-sm" class="custom-control-input" value="0" checked>
+											  <label class="custom-control-label pr-3" for="game-sm">
+											    S/M
+											  </label>
+											</div>
+											<div class="custom-control custom-radio d-inline">
+											  <input type="radio" name="game" id="game-usum" class="custom-control-input" value="1">
+											  <label class="custom-control-label" for="game-usum">
+											    US/UM
+											  </label>
+											</div>
+										</div>
+										<!-- SOS Shiny Charm -->
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="sos-charm" class="shiny-charm custom-control-input">
+											<label class="custom-control-label" for="sos-charm">Shiny Charm?</label>
+										</div>
+										<!-- SOS Chain Length -->
+										<label for="sos-length">Chain Length</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="sos-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="sos-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<div class="input-group-append">
+												<button id="sos-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
+										</div>
+									</div>
+									<!-- SOS Information Link -->
+									<div class="col-4 align-self-end no-pad-right">
+										<a href="https://bulbapedia.bulbagarden.net/wiki/SOS_Battle" class="btn btn-primary float-right">Bulbapedia</a>
+									</div>
+								</div>

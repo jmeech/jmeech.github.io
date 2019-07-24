@@ -12,10 +12,19 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number] {
 	background-color: #fff;
+	-moz-appearance:textfield;
+}
+
+.content {
+	margin-top: 74px;
 }
 
 .detail {
 	font-size: .8em;
+}
+
+.fixed {
+	position: fixed;
 }
 
 .panel-content {
@@ -24,6 +33,13 @@ input[type=number] {
 
 .tab-pane {
 	display: flex;
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
 }
 
 .navbar-brand {
@@ -42,6 +58,11 @@ input[type=number] {
 .nav-item {
 	padding-left: 0;
 	padding-right: 0;
+}
+
+.sticky {
+	position: sticky;
+	top: 58px;
 }
 
 .input-group {
@@ -70,7 +91,7 @@ input[type=number] {
 	background-size: cover;
 }
 
-.canvas-chain {
+.canvas-fishing {
 	height: 100px;
 	background:
 		linear-gradient(
@@ -120,4 +141,16 @@ input[type=number] {
 
 .sprite:hover {
 	background-color: #ccca;
+}
+
+.sprite-grid {
+	margin-bottom: 20px;
+}
+
+.img-flag {
+	height: 32px;
+	width: 32px;
+}
+
+.sprite-panel {
 }

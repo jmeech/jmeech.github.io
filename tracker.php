@@ -12,18 +12,27 @@
 			various sources.  Original authors noted where relevant.
 		-->
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<title>Shiny Tracker</title>
-
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
 		<link href="./css/deeply.css"  rel="stylesheet"/>
 		<link href="./css/shiny.css"  rel="stylesheet"/>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
+		<link rel="manifest" href="./icons/site.webmanifest">
+		<link rel="mask-icon" href="./icons/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./icons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./icons/browserconfig.xml">
+		<meta name="theme-color" content="#ff550b">
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	</head>
 	<body>
 		<!-- NAVBAR -->
-		<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-2">
+		<div class="navbar navbar-expand-md navbar-dark bg-primary mb-2">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -32,23 +41,43 @@
 			<div class="collapse navbar-collapse" id="navbarColor02">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="#">Calculate</a>
+						<a class="nav-link" href="./index.html">Calculate</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Track</a>
 					</li>
 				</ul>
 			</div>
-		</nav>
+		</div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-7">
-					<?php
-					for ($i = 1; $i <= 809; $i++) {
-					echo '<div class="sprite"><img src="./img/sprites/' . $i . 's.png" /></div>';
-					}
-					?>
+		<div class="content container">
+
+			<div class="sticky">
+				<div class="row">
+					<div class="col-7 sprite-panel">
+						<?php
+						for($i = 0; $i <= 26; $i++) {
+							echo '<div class="sprite-grid">';
+							for($j = 1; $j <= 30; $j++) {
+								if ((($i * 30) + $j) <= 809) {
+									echo '<div class="sprite"><img src="./img/sprites/' . (($i * 30) + $j) . 's.png" /></div>';
+								}
+							}
+							echo '</div>';
+						}
+						?>
+					</div>
+
+					<div class="col-5 panel-content">
+						<div class="card bg-primary text-white">
+							<div class="card-body d-flex flex-column align-items-start">
+								<h4 class="card-title">Lorem Ipsum</h4>
+								<p class="card-text">
+									test test test
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

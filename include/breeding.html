@@ -1,0 +1,35 @@
+								<div class="row">
+									<p class="detail">Breeding Pokémon from two different language games results in a boosted shiny rate for all eggs generated.</p>
+									<div class="col-8 no-pad-left">
+										<!-- Breeding shiny charm -->
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="breeding-charm" class="shiny-charm custom-control-input">
+											<label class="custom-control-label" for="breeding-charm">Shiny Charm?</label>
+										</div>
+										<!-- Breeding Masuda Method -->
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="masuda-method" class="custom-control-input">
+											<label class="custom-control-label" for="masuda-method">Masuda Method?</label>
+										</div>
+										<!-- Breeding generation selector -->
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="breeding-gen" class="gen custom-control-input">
+											<label class="custom-control-label" for="breeding-gen">Pre Gen VI?</label>
+										</div>
+										<!-- Breeding chain length -->
+										<label for="breeding-length">Encounters</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button id="breeding-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
+											</div>
+											<input type="number" id="breeding-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<div class="input-group-append">
+												<button id="breeding-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
+											</div>
+										</div>
+									</div>
+									<!-- Breeding information link -->
+									<div class="col-4 align-self-end no-pad-right">
+										<a href="https://bulbapedia.bulbagarden.net/wiki/Masuda_method" class="btn btn-primary float-right">Bulbapedia</a>
+									</div>
+								</div>

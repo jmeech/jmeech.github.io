@@ -14,42 +14,31 @@ $(document).ready(function() {
 	var totalCumulative = document.getElementById('total-cumulative');
 	var totalPercent = document.getElementById('total-percent');
 
-	// Bools
-	var shinyCharm = $('.shiny-charm');
-	var masudaMethod = $('#masuda-method');
-
 	// Tab navigation
 	var tab = 0;
-	var safariTab = document.getElementById('safari-tab');
-	var breedingTab = document.getElementById('breeding-tab');
-	var chainTab = document.getElementById('chain-tab');
-	var hordeTab = document.getElementById('horde-tab');
-	var sosTab = document.getElementById('sos-tab');
-	var radarTab = document.getElementById('radar-tab');
-	var dexnavTab = document.getElementById('dexnav-tab');
-	var fullOddsTab = document.getElementById('full-odds-tab');
+	var panel = document.getElementById('panel');
 
-	// Updates odds for a single encounter
+	// Updates odds
 	function updateValue() {
 
 		switch (tab) {
 			case (0) : // Safari
-				pulls = (shinyCharm.is(':checked') ? 7 : 5);
+				pulls = ($('.shiny-charm').is(':checked') ? 7 : 5);
 				trials = parseInt($('#safari-length').val());
 				break;
 			case (1) : // Breeding
-				if (shinyCharm.is(':checked')) pulls = (masudaMethod.is(':checked') ? 8 : 3)
-				else pulls = (masudaMethod.is(':checked') ? 6 : 1);
+				if ($('.shiny-charm').is(':checked')) pulls = ($('#masuda-method').is(':checked') ? 8 : 3)
+				else pulls = ($('#masuda-method').is(':checked') ? 6 : 1);
 				trials = parseInt($('#breeding-length').val());
 				break;
 			case (2) : // Fishing
 				var chain = $('#fishing-length').val();
 				chain = (chain > 20 ? 20 : chain);
-				pulls = 1 + (chain * 2) + (shinyCharm.is(':checked') ? 2 : 0);
+				pulls = 1 + (chain * 2) + ($('.shiny-charm').is(':checked') ? 2 : 0);
 				trials = parseInt($('#fishing-length').val());
 				break;
 			case (3) : // Hordes
-				pulls = (shinyCharm.is(':checked') ? 15 : 5);
+				pulls = ($('.shiny-charm').is(':checked') ? 15 : 5);
 				trials = parseInt($('#horde-length').val());
 				break;
 				break;
@@ -57,15 +46,15 @@ $(document).ready(function() {
 				var chain = $('#sos-length').val();
 				if($('input:radio[name=game]:checked').val() == 0) chain %= 255;
 				pulls = (chain >= 70 ? 4 : 1);
-				pulls += (shinyCharm.is(':checked') ? 2 : 0);
+				pulls += ($('.shiny-charm').is(':checked') ? 2 : 0);
 				trials = parseInt($('#sos-length').val());
 				break;
-			case (5) : // Radar
+			case (5) : // TODO Radar
 				break;
-			case (6) : // Dexnav
+			case (6) : // TODO Dexnav
 				break;
 			case (7) : // Full Odds
-				pulls = (shinyCharm.is(':checked') ? 3 : 1);
+				pulls = ($('.shiny-charm').is(':checked') ? 3 : 1);
 				trials = parseInt($('#full-odds-length').val());
 				break;
 			default :
@@ -75,130 +64,100 @@ $(document).ready(function() {
 		console.log("Pulls: " + pulls);
 		console.log("Est  : " + (4096 / pulls).toFixed(2));
 
+		// Display
 		totalPulls.innerHTML = pulls;
 		totalPullsEstimate.innerHTML = Math.round(4096 / pulls);
-
 		cumulative = (binomial(1, trials, (pulls / 4096)).toFixed(12));
 		totalCumulative.innerHTML = cumulative;
 		totalPercent.innerHTML = (cumulative * 100).toFixed(2);
 
 	}
-	updateValue();
 
-	function probability() {
+	// Tab navigation
+	$('.tab').on("click", function() {
+		switch (this.id) {
+			case ('safari-tab') :
+				tab = 0;
+				$('#panel').load("./include/safari.html");
+				$('#canvas').removeClass().addClass("canvas-safari");
+				break;
+			case ('breeding-tab') :
+				tab = 1;
+				$('#panel').load("./include/breeding.html");
+				$('#canvas').removeClass().addClass("canvas-breeding");
+				break;
+			case ('fishing-tab') :
+				tab = 2;
+				$('#panel').load("./include/fishing.html");
+				$('#canvas').removeClass().addClass("canvas-fishing");
+				break;
+			case ('horde-tab') :
+				tab = 3;
+				$('#panel').load("./include/horde.html");
+				$('#canvas').removeClass().addClass("canvas-horde");
+				break;
+			case ('sos-tab') :
+				tab = 4;
+				$('#panel').load("./include/sos.html");
+				$('#canvas').removeClass().addClass(); // TODO needs picture
+				break;
+			case ('radar-tab') :
+				tab = 5;
+				$('#panel').load("./include/radar.html");
+				$('#canvas').removeClass().addClass(); // TODO needs picture
+				break;
+			case ('dexnav-tab') :
+				tab = 6;
+				$('#panel').load("./include/dexnav.html");
+				$('#canvas').removeClass().addClass(); // TODO needs picture
+				break;
+			case ('full-odds-tab') :
+				tab = 7;
+				$('#panel').load("./include/fullodds.html");
+				$('#canvas').removeClass().addClass(); // TODO needs picture
+				break;
+		}
 
-	}
-
-	// on Safari Tab click
-	safariTab.addEventListener("click", function() {
-		console.log("Safari tab");
-		tab = 0;
-		shinyCharm.prop('checked', false);
-		$('.counter').val(0);
-		$('#canvas').removeClass().addClass("canvas-safari");
-		updateValue();
-	}, false);
-
-	// on Masuda Method click
-	breedingTab.addEventListener("click", function() {
-		console.log("Breeding tab");
-		tab = 1;
-		shinyCharm.prop('checked', false);
-		masudaMethod.prop('checked', false);
-		$('.counter').val(0);
-		$('#canvas').removeClass().addClass("canvas-breeding");
-		updateValue();
-	}, false);
-
-	// on Chain Fishing click
-	chainTab.addEventListener("click", function() {
-		console.log("Fishing tab");
-		tab = 2;
-		shinyCharm.prop('checked', false);
-		$('.counter').val(0);
-		$('#canvas').removeClass().addClass("canvas-chain");
-		updateValue();
-	}, false);
-
-	// on Horde Encounter click
-	hordeTab.addEventListener("click", function() {
-		console.log("Horde tab");
-		tab = 3;
-		shinyCharm.prop('checked', false);
-		$('.counter').val(0);
-		$('#canvas').removeClass().addClass("canvas-horde");
-		updateValue();
-	}, false);
-
-	// on SOS Encounter click
-	sosTab.addEventListener("click", function() {
-		console.log("S.O.S. tab");
-		tab = 4;
-		shinyCharm.prop('checked', false);
-		$('.counter').val(0);
-		$('#canvas').removeClass().addClass(); // TODO needs picture
-		updateValue();
-	}, false);
-
-	// on Radar Chaining click
-	radarTab.addEventListener("click", function() {
-		console.log("Radar tab");
-		tab = 5;
-		shinyCharm.prop('checked', false);
-		$('.counter').val(0);
-		$('#canvas').removeClass().addClass(); // TODO needs picture
-		updateValue();
-	}, false);
-
-	// on Dexnav Chaining click
-	dexnavTab.addEventListener("click", function() {
-		console.log("Dexnav tab");
-		tab = 6;
-		shinyCharm.prop('checked', false);
-		$('.counter').val(0);
-		$('#canvas').removeClass().addClass(); // TODO needs picture
-		updateValue();
-	}, false);
-
-	// on Full Odds click
-	fullOddsTab.addEventListener("click", function() {
-		console.log("Full Odds tab");
-		tab = 7;
-		shinyCharm.prop('checked', false);
-		$('.counter').val(0);
-		$('#canvas').removeClass().addClass(); // TODO needs picture
-		updateValue();
-	}, false);
-
-	// Resets counters
-	$('.btn-reset').on('click', function() {
-		console.log('Counter reset');
-		$(this).parent().siblings('.counter').prop('value', 0);
 		updateValue();
 	})
 
-	// Increments counters
-	$('.btn-increment').on('click', function() {
+	// Increment the encounters
+	function increment() {
 		console.log('Counter increment');
 		var counter = $(this).parent().siblings('.counter');
 		counter.val(parseInt(counter.val()) + 1);
 		updateValue();
-	})
+	}
 
-	// Update on game state change
-	$('#game-select').change(function() {
+	// Reset the encounters
+	function reset() {
+		console.log('Counter reset');
+		$(this).parent().siblings('.counter').prop('value', 0);
 		updateValue();
+	}
+
+	// Format Pokemon selector
+	function formatOption(state) {
+		if (!state.id) {
+	    return state.text;
+	  }
+		var $state = $(
+			'<span><img src="./img/sprites/' + state.element.value.toLowerCase() + 's.png" class="img-flag" />' + state.text + '</span>'
+		);
+		return $state;
+	};
+
+	$(document).on('click', '.btn-increment', increment);
+	$(document).on('click', '.btn-reset', reset);
+	$(document).on('change', '.shiny-charm', updateValue);
+	$(document).on('change', '#masuda-method', updateValue);
+	$(document).on('change', '#game-select', updateValue);
+
+	$('.pokemon-selector').select2({
+		templateResult: formatOption
 	});
 
-	// Update on charm state change
-	shinyCharm.change(function() {
-		updateValue();
-	})
-
-	// Update on Masuda Method state change
-	masudaMethod.change(function() {
-		updateValue();
-	})
+	$('.game-selector').select2();
 
 	// This function adapted from a John D Cook blog post
 	// https://www.johndcook.com/blog/2008/04/24/how-to-calculate-binomial-probabilities/
@@ -213,5 +172,9 @@ $(document).ready(function() {
 		}
 		return sum;
 	}
-});
 
+	// Initialize the page
+	$('#panel').load("./include/safari.html");
+	updateValue();
+
+});
