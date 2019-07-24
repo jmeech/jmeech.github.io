@@ -12,14 +12,26 @@
 			various sources.  Original authors noted where relevant.
 		-->
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
 		<title>Shiny Tracker</title>
 
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-		<link href="./css/deeply.css"  rel="stylesheet"/>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+		<link href="https://themesguide.github.io/top-hat/dist/deeply/theme.css"  rel="stylesheet"/>
 		<link href="./css/shiny.css"  rel="stylesheet"/>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
+		<link rel="manifest" href="./icons/site.webmanifest">
+		<link rel="mask-icon" href="./icons/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./icons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./icons/browserconfig.xml">
+		<meta name="theme-color" content="#ff550b">
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	</head>
 	<body>
 		<!-- NAVBAR -->
@@ -35,14 +47,51 @@
 						<a class="nav-link" href="#">Calculate</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Track</a>
+						<a class="nav-link" href="./tracker.php">Track</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
 
-		<div class="container">
-			<h3>Shiny Odds Calculator</h3>
+		<div class="content container">
+			<div class="panel-content mx-auto">
+				<div class="card border-primary">
+					<div class="card-body">
+						
+						<h1 >Shiny Odds Calculator</h1>
+
+						<div class="row">
+
+							<div class="col-4">
+								<h4>Currently Hunting</h4>
+								<div class="input-group">
+									<select id="pokemon-selector" class="form-control" name="hunting">
+									</select>
+								</div>
+							</div>
+
+							<div class="col-4">
+								<h4>Current Game</h4>
+								<div class="input-group">
+									<select class="game-selector form-control" name="game">
+										<option value="RSE">RSE</option>
+										<option value="FRLG">FRLG</option>
+										<option value="DPP">DPP</option>
+										<option value="HGSS">HGSS</option>
+										<option value="BW">BW</option>
+										<option value="B2W2">B2W2</option>
+										<option value="XY">XY</option>
+										<option value="ORAS">ORAS</option>
+										<option value="SM">SM</option>
+										<option value="USUM">USUM</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="row">
 
 				<!-- CALCULATOR INTERFACE -->
@@ -52,28 +101,28 @@
 						<!-- TABS -->
 						<ul class="nav nav-tabs">
 							<li class="nav-item col-6 col-lg-3">
-								<a class="nav-link active" href="#safari-panel" id="safari-tab" data-toggle="tab"><h6>Safari</h6></a>
+								<a class="nav-link tab active" href="#safari-panel" id="safari-tab" data-toggle="tab"><h6>Safari</h6></a>
 							</li>
 							<li class="nav-item col-6 col-lg-3">
-								<a class="nav-link" href="#breeding-panel" id="breeding-tab" data-toggle="tab"><h6>Breeding</h6></a>
+								<a class="nav-link tab" href="#breeding-panel" id="breeding-tab" data-toggle="tab"><h6>Breeding</h6></a>
 							</li>
 							<li class="nav-item col-6 col-lg-3">
-								<a class="nav-link" href="#chain-panel" id="chain-tab" data-toggle="tab"><h6>Chain</h6></a>
+								<a class="nav-link tab" href="#fishing-panel" id="fishing-tab" data-toggle="tab"><h6>Chain</h6></a>
 							</li>
 							<li class="nav-item col-6 col-lg-3">
-								<a class="nav-link" href="#horde-panel" id="horde-tab" data-toggle="tab"><h6>Hordes</h6></a>
+								<a class="nav-link tab" href="#horde-panel" id="horde-tab" data-toggle="tab"><h6>Hordes</h6></a>
 							</li>
 							<li class="nav-item col-6 col-lg-3">
-								<a class="nav-link" href="#sos-panel" id="sos-tab" data-toggle="tab"><h6>S.O.S.</h6></a>
+								<a class="nav-link tab" href="#sos-panel" id="sos-tab" data-toggle="tab"><h6>S.O.S.</h6></a>
 							</li>
 							<li class="nav-item col-6 col-lg-3">
-								<a class="nav-link" href="#radar-panel" id="radar-tab" data-toggle="tab"><h6>Radar</h6></a>
+								<a class="nav-link tab" href="#radar-panel" id="radar-tab" data-toggle="tab"><h6>Radar</h6></a>
 							</li>
 							<li class="nav-item col-6 col-lg-3">
-								<a class="nav-link" href="#dexnav-panel" id="dexnav-tab" data-toggle="tab"><h6>Dexnav</h6></a>
+								<a class="nav-link tab" href="#dexnav-panel" id="dexnav-tab" data-toggle="tab"><h6>Dexnav</h6></a>
 							</li>
 							<li class="nav-item col-6 col-lg-3">
-								<a class="nav-link" href="#full-odds-panel" id="full-odds-tab" data-toggle="tab"><h6>Full Odds</h6></a>
+								<a class="nav-link tab" href="#full-odds-panel" id="full-odds-tab" data-toggle="tab"><h6>Full Odds</h6></a>
 							</li>
 						</ul>
 
@@ -81,233 +130,11 @@
 						<div id="canvas" class="canvas-safari"></div>
 						<div class="tab-content px-3 pt-3">
 						
-							<!-- SAFARI PANEL -->
-							<div class="tab-pane container active" id="safari-panel">
-								<div class="row">
-									<p class="detail">Pokémon in the Kalos Friend Safari have an increased shiny rate.  This stacks with the Shiny Charm.</p>
-									<div class="col-8 no-pad-left">
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" id="safari-charm" class="shiny-charm custom-control-input">
-											<label class="custom-control-label" for="safari-charm">Shiny Charm?</label>
-										</div>
-										<label for="safari-length">Encounters</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="safari-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="safari-length" min="0" class="form-control counter" value="0" aria-label="0">
-											<div class="input-group-append">
-												<button id="safari-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/Friend_Safari" class="btn btn-primary float-right">Bulbapedia</a>
-									</div>
-								</div>
+							<!-- PANEL -->
+							<div class="tab-pane container active" id="panel">
+
 							</div>
 
-							<!-- BREEDING PANEL -->
-							<div class="tab-pane container" id="breeding-panel">
-								<div class="row">
-									<p class="detail">Breeding Pokémon from two different language games results in a boosted shiny rate for all eggs generated.</p>
-									<div class="col-8 no-pad-left">
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" id="breeding-charm" class="shiny-charm custom-control-input">
-											<label class="custom-control-label" for="breeding-charm">Shiny Charm?</label>
-										</div>
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" id="masuda-method" class="custom-control-input">
-											<label class="custom-control-label" for="masuda-method">Masuda Method?</label>
-										</div>
-										<label for="breeding-length">Encounters</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="breeding-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="breeding-length" min="0" class="form-control counter" value="0" aria-label="0">
-											<div class="input-group-append">
-												<button id="breeding-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/Masuda_method" class="btn btn-primary float-right">Bulbapedia</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- CHAIN FISHING PANEL -->
-							<div class="tab-pane container" id="chain-panel">
-								<div class="row">
-									<p class="detail">Chain fishing (repeatedly fishing without moving or missing a bite) increases shiny rates rapidly.</p>
-									<div class="col-8 no-pad-left">
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" id="chain-charm" class="shiny-charm custom-control-input">
-											<label class="custom-control-label" for="chain-charm">Shiny Charm?</label>
-										</div>
-										<label for="fishing-length">Chain Length</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="fishing-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="fishing-length" min="0" class="form-control counter" value="0" aria-label="0" readonly="true">
-											<div class="input-group-append">
-												<button id="fishing-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/Fishing#Generation_VI" class="btn btn-primary float-right">Bulbapedia</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- HORDE PANEL -->
-							<div class="tab-pane container" id="horde-panel">
-								<div class="row">
-									<p class="detail">Hordes allow you to encounter five Pokémon simultaneously, effectively allowing you to check 5 at a time.</p>
-									<div class="col-8 no-pad-left">
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" id="horde-charm" class="shiny-charm custom-control-input">
-											<label class="custom-control-label" for="horde-charm">Shiny Charm?</label>
-										</div>
-										<label for="horde-length">Encounters</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="horde-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="horde-length" min="0" class="form-control counter" value="0" aria-label="0">
-											<div class="input-group-append">
-												<button id="horde-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/Horde_Encounter" class="btn btn-primary float-right">Bulbapedia</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- SOS PANEL -->
-							<div class="tab-pane container" id="sos-panel">
-								<div class="row">
-									<p class="detail">In 7th gen games, chaining S.O.S. encounters will raise the odds that a called Pokémon is shiny.</p>
-									<div class="col-8 no-pad-left">
-										<div id="game-select">
-											<div class="custom-control custom-radio d-inline">
-											  <input type="radio" name="game" id="game-sm" class="custom-control-input" value="0" checked>
-											  <label class="custom-control-label pr-3" for="game-sm">
-											    S/M
-											  </label>
-											</div>
-											<div class="custom-control custom-radio d-inline">
-											  <input type="radio" name="game" id="game-usum" class="custom-control-input" value="1">
-											  <label class="custom-control-label" for="game-usum">
-											    US/UM
-											  </label>
-											</div>
-										</div>
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" id="sos-charm" class="shiny-charm custom-control-input">
-											<label class="custom-control-label" for="sos-charm">Shiny Charm?</label>
-										</div>
-										<label for="sos-length">Chain Length</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="sos-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="sos-length" min="0" class="form-control counter" value="0" aria-label="0">
-											<div class="input-group-append">
-												<button id="sos-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/SOS_Battle" class="btn btn-primary float-right">Bulbapedia</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- POKERADAR PANEL -->
-							<div class="tab-pane container" id="radar-panel">
-								<div class="row">
-									<p class="detail">I'm not positive how Pokeradar works, this is a placeholder until I understand the formula.</p>
-									<div class="col-8 no-pad-left">
-										<label for="radar-length">Chain Length</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="radar-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="radar-length" min="0" class="form-control counter" value="0" aria-label="0">
-											<div class="input-group-append">
-												<button id="radar-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9_Radar" class="btn btn-primary float-right">Bulbapedia</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- DEXNAV PANEL -->
-							<div class="tab-pane container" id="dexnav-panel">
-								<div class="row">
-									<p class="detail">I'm not positive how Dexnav hunting works, this is a placeholder until I understand the formula.</p>
-									<div class="col-8 no-pad-left">
-										<label for="dexnav-length">Search Level</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="dexnav-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="dexnav-length" min="0" class="form-control counter" value="0" aria-label="0">
-											<div class="input-group-append">
-												<button id="dexnav-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-										<label for="dexnav-length">Encounters</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="dexnav-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="dexnav-length" min="0" class="form-control counter" value="0" aria-label="0">
-											<div class="input-group-append">
-												<button id="dexnav-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/DexNav" class="btn btn-primary float-right">Bulbapedia</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- FULL ODDS PANEL -->
-							<div class="tab-pane container" id="full-odds-panel">
-								<div class="row">
-									<p class="detail">By encountering the same Pokémon over and over, eventually that Pokémon will be shiny.</p>
-									<div class="col-8 no-pad-left">
-										<div class="custom-control custom-checkbox col-8">
-											<input type="checkbox" id="full-charm" class="shiny-charm custom-control-input">
-											<label class="custom-control-label" for="full-charm">Shiny Charm?</label>
-										</div>
-										<label for="full-odds-length">Encounters</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<button id="full-odds-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
-											</div>
-											<input type="number" id="full-odds-length" min="0" class="form-control counter" value="0" aria-label="0">
-											<div class="input-group-append">
-												<button id="full-odds-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-4 align-self-end no-pad-right">
-										<a href="https://bulbapedia.bulbagarden.net/wiki/Shiny_Pokémon" class="btn btn-primary float-right">Bulbapedia</a>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -332,12 +159,14 @@
 			</div>
 		</div>
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 		<!-- Substack's gamma implementation -->
 		<!-- https://github.com/substack/gamma.js -->
 		<script src="./javascript/gamma.js" type="text/javascript"></script>
+		<script src="./javascript/pokemon.js" type="text/javascript"></script>
 		<script src="./javascript/shiny.js" type="text/javascript"></script>
 	</body>
 	<!--

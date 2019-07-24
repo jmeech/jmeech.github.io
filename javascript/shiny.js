@@ -17,6 +17,7 @@ $(document).ready(function() {
 	// Tab navigation
 	var tab = 0;
 	var panel = document.getElementById('panel');
+	var select = document.getElementById('pokemon-selector');
 
 	// Updates odds
 	function updateValue() {
@@ -121,6 +122,8 @@ $(document).ready(function() {
 		updateValue();
 	})
 
+
+
 	// Increment the encounters
 	function increment() {
 		console.log('Counter increment');
@@ -153,7 +156,7 @@ $(document).ready(function() {
 	$(document).on('change', '#masuda-method', updateValue);
 	$(document).on('change', '#game-select', updateValue);
 
-	$('.pokemon-selector').select2({
+	$('#pokemon-selector').select2({
 		templateResult: formatOption
 	});
 
@@ -174,7 +177,15 @@ $(document).ready(function() {
 	}
 
 	// Initialize the page
+	// Populate pokemon dropdown
+	for(var i = 1; i <= 809; ++i) {
+		var el = document.createElement("option");
+		el.textContent = pokemon[i];
+		el.value = i;
+		select.appendChild(el);
+	}
 	$('#panel').load("./include/safari.html");
 	updateValue();
+
 
 });
