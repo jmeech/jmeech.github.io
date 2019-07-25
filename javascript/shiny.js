@@ -6,48 +6,65 @@ $(document).ready(function() {
 	 */
 
 	// For math
-	var pulls = 5;
+	var pulls;
 	var trials = 0;
+	var denom = 4096;
 	var cumulative = 0.0;
 	var totalPulls = document.getElementById('total-pulls');
+	var denomElement = document.getElementById('denominator');
 	var totalPullsEstimate = document.getElementById('total-pulls-estimate');
 	var totalCumulative = document.getElementById('total-cumulative');
 	var totalPercent = document.getElementById('total-percent');
+
+	// Bools
+	var charm;
+	var masuda;
 
 	// Tab navigation
 	var tab = 0;
 	var panel = document.getElementById('panel');
 	var select = document.getElementById('pokemon-selector');
+	var gen;
 
 	// Updates odds
 	function updateValue() {
 
+		gen = $('#game-selector option:selected').attr('gen');
+		denom = (gen == "6" || gen == "7") ? 4096 : 8192;
+
+		charm = $('.shiny-charm').is(':checked');
+		masuda = $('#masuda-method').is(':checked');
+
 		switch (tab) {
 			case (0) : // Safari
-				pulls = ($('.shiny-charm').is(':checked') ? 7 : 5);
+				pulls = (charm ? 7 : 5);
 				trials = parseInt($('#safari-length').val());
 				break;
 			case (1) : // Breeding
-				if ($('.shiny-charm').is(':checked')) pulls = ($('#masuda-method').is(':checked') ? 8 : 3)
-				else pulls = ($('#masuda-method').is(':checked') ? 6 : 1);
+				pulls = 1;
+				if (charm) pulls += 2;
+				if (masuda) {
+					pulls += (gen == 4 ? 4 : 5);
+				}
 				trials = parseInt($('#breeding-length').val());
 				break;
 			case (2) : // Fishing
 				var chain = $('#fishing-length').val();
 				chain = (chain > 20 ? 20 : chain);
-				pulls = 1 + (chain * 2) + ($('.shiny-charm').is(':checked') ? 2 : 0);
+				pulls = 1 + (chain * 2) + (charm ? 2 : 0);
 				trials = parseInt($('#fishing-length').val());
 				break;
 			case (3) : // Hordes
-				pulls = ($('.shiny-charm').is(':checked') ? 15 : 5);
+				pulls = (charm ? 15 : 5);
 				trials = parseInt($('#horde-length').val());
 				break;
 				break;
 			case (4) : // SOS
 				var chain = $('#sos-length').val();
-				if($('input:radio[name=game]:checked').val() == 0) chain %= 255;
+				if($('#game-selector option[value=SM]').prop('selected')) chain %= 255;
+				// if($('input:radio[name=game]:checked').val() == 0) chain %= 255;
 				pulls = (chain >= 70 ? 4 : 1);
-				pulls += ($('.shiny-charm').is(':checked') ? 2 : 0);
+				pulls += (charm ? 2 : 0);
 				trials = parseInt($('#sos-length').val());
 				break;
 			case (5) : // TODO Radar
@@ -55,20 +72,18 @@ $(document).ready(function() {
 			case (6) : // TODO Dexnav
 				break;
 			case (7) : // Full Odds
-				pulls = ($('.shiny-charm').is(':checked') ? 3 : 1);
+				pulls = (charm ? 3 : 1);
 				trials = parseInt($('#full-odds-length').val());
 				break;
 			default :
 				break;
 		}
 
-		console.log("Pulls: " + pulls);
-		console.log("Est  : " + (4096 / pulls).toFixed(2));
-
 		// Display
 		totalPulls.innerHTML = pulls;
-		totalPullsEstimate.innerHTML = Math.round(4096 / pulls);
-		cumulative = (binomial(1, trials, (pulls / 4096)).toFixed(12));
+		denomElement.innerHTML = denom;
+		totalPullsEstimate.innerHTML = Math.round(denom / pulls);
+		cumulative = (binomial(1, trials, (pulls / denom)).toFixed(12));
 		totalCumulative.innerHTML = cumulative;
 		totalPercent.innerHTML = (cumulative * 100).toFixed(2);
 
@@ -119,10 +134,72 @@ $(document).ready(function() {
 				break;
 		}
 
+		$('.shiny-charm').is(':checked', false);
+		$('#masuda-method').is(':checked', false);
+
 		updateValue();
 	})
 
-
+	$('#game-selector').change(function() {
+		$('.shiny-charm').prop('checked', false);
+		$('#masuda-method').prop('checked', false);
+		$('.counter').prop('value', 0);
+		Array.from(document.getElementsByClassName('tab')).forEach((tab) => {
+			$(tab).hide();
+		});
+		var gameId = $(this).find("option:selected").attr("value");
+		switch(gameId) {
+			case "RSE"  :
+				$('#full-odds-tab').show().children().click();
+				break;
+			case "FRLG" :
+				$('#full-odds-tab').show().children().click();
+				break;
+			case "DPP"  :
+				$('#breeding-tab').show().children().click();
+				$('#radar-tab').show();
+				$('#full-odds-tab').show();
+				break;
+			case "HGSS" :
+				$('#breeding-tab').show().children().click();
+				$('#radar-tab').show();
+				$('#full-odds-tab').show();
+				break;
+			case "BW"   :
+				$('#breeding-tab').show().children().click();
+				$('#full-odds-tab').show();
+				break;
+			case "B2W2" :
+				$('#breeding-tab').show().children().click();
+				$('#full-odds-tab').show();
+				break;
+			case "XY"   :
+				$('#safari-tab').show().children().click();
+				$('#breeding-tab').show();
+				$('#fishing-tab').show();
+				$('#horde-tab').show();
+				$('#radar-tab').show();
+				$('#full-odds-tab').show();
+				break;
+			case "ORAS" :
+				$('#breeding-tab').show().children().click();
+				$('#fishing-tab').show();
+				$('#horde-tab').show();
+				$('#dexnav-tab').show();
+				$('#full-odds-tab').show();
+				break;
+			case "SM"   :
+				$('#breeding-tab').show().children().click();
+				$('#sos-tab').show();
+				$('#full-odds-tab').show();
+				break;
+			case "USUM" :
+				$('#breeding-tab').show().children().click();
+				$('#sos-tab').show();
+				$('#full-odds-tab').show();
+				break;
+		}
+	});
 
 	// Increment the encounters
 	function increment() {
@@ -160,7 +237,7 @@ $(document).ready(function() {
 		templateResult: formatOption
 	});
 
-	$('.game-selector').select2();
+	$('#game-selector').select2();
 
 	// This function adapted from a John D Cook blog post
 	// https://www.johndcook.com/blog/2008/04/24/how-to-calculate-binomial-probabilities/
@@ -185,6 +262,7 @@ $(document).ready(function() {
 		select.appendChild(el);
 	}
 	$('#panel').load("./include/safari.html");
+	$('#game-selector option[value=XY]').prop('selected', 'selected').change();
 	updateValue();
 
 
