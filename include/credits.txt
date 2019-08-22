@@ -8,7 +8,7 @@ Gen 6 - Smogon XY Sprite Project (v1.1) - https://www.smogon.com/forums/threads/
 Gen 7 - Smogon Sun/Moon Sprite Project - https://www.smogon.com/forums/threads/sun-moon-sprite-project.3577711/
 Celesteela sprite by Falgaia, converted to shiny by jmeech (yours truly), to be used until the sprite project has an agreed upon shiny Celesteela sprite.
 Guzzlord sprite by Modeling Clay, converted to shiny by jmeech (yours truly), to be used until the sprite project has an agreed upon shiny Guzzlord sprite.
-Naganadel sprite by AiliCrousaias - https://www.deviantart.com/ailicrousaias/art/Naganadel-Sprite-714324125 - Modified by jmeech (yours truly) to fit the 96x96 standard
+Naganadel sprite by AiliCrousaias - https://www.deviantart.com/ailicrousaias/art/Naganadel-Sprite-714324125 - Modified by jmeech (yours truly) to fit the 96x96 standard //TODO SECURE PERMISSION
 Blacephalon sprite by DeepZekrom - https://www.deviantart.com/deepzekrom/art/UB-Burst-B-and-W-sprite-732506450 - Cropped to fit the 96x96 standard
 
 CODE/MATH

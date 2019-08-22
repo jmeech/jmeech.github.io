@@ -1,26 +1,38 @@
 								<div class="row">
-									<p class="detail">I'm not positive how Dexnav hunting works, this is a placeholder until I understand the formula.</p>
+									<p class="detail">Dexnav hunting adds a small bonus shiny chance on top of the full odds. This bonus increases with the search level.</p>
+									<p class="detail">This calculator gives the odds averaged between the dexnav bonus and the standard full odds.</p>
 									<div class="col-8 no-pad-left">
-										<label for="dexnav-length">Search Level</label>
+
+										<!-- Dexnav Shiny Charm -->
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" id="dexnav-charm" class="shiny-charm custom-control-input">
+											<label class="custom-control-label" for="dexnav-charm">Shiny Charm?</label>
+										</div>
+
+										<!-- Dexnav Chain Length -->
+										<label for="dexnav-length">Chain Length:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
 												<button id="dexnav-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
 											</div>
-											<input type="number" id="dexnav-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<input type="number" id="dexnav-length" min="0" class="form-control counter chain" required value="0" aria-label="0">
 											<div class="input-group-append">
 												<button id="dexnav-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
 											</div>
 										</div>
-										<label for="dexnav-length">Encounters</label>
+
+										<!-- Dexnav Search Level -->
+										<label for="dexnav-length">Search Level:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
 												<button id="dexnav-reset" class="btn btn-outline-primary btn-reset" type="button">Reset</button>
 											</div>
-											<input type="number" id="dexnav-length" min="0" class="form-control counter" value="0" aria-label="0">
+											<input type="number" id="dexnav-length" min="0" class="form-control counter search-level" required value="0" aria-label="0">
 											<div class="input-group-append">
 												<button id="dexnav-increment" class="btn btn-outline-primary btn-increment" type="button">+</button>
 											</div>
 										</div>
+
 									</div>
 									<div class="col-4 align-self-end no-pad-right">
 										<a href="https://bulbapedia.bulbagarden.net/wiki/DexNav" class="btn btn-primary float-right">Bulbapedia</a>
